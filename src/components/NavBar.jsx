@@ -27,9 +27,10 @@ export default function Nav () {
   return (
     <Navbar
       isBordered
+      maxWidth='full'
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className='dark text-foreground bg-background'
+      className=' dark text-foreground bg-background'
       classNames={{
         item: [
           'flex',
@@ -55,7 +56,7 @@ export default function Nav () {
       </NavbarContent>
 
       <NavbarContent className='hidden gap-4 sm:flex' justify='start'>
-        <NavbarBrand className='gap-2'>
+        <NavbarBrand>
           <Image src='/PPK.png' width={40} height={40} alt='ppk seyegan' />
           <p className='font-bold text-inherit'>PPK Seyegan</p>
         </NavbarBrand>
@@ -82,7 +83,7 @@ export default function Nav () {
       <NavbarContent justify='end' className='hidden sm:flex'>
         <Input
           classNames={{
-            base: 'max-w-full sm:max-w-[10rem] h-10',
+            base: 'max-w-full sm:max-w-[15rem] h-10',
             mainWrapper: 'h-full',
             input: 'text-small',
             inputWrapper:
@@ -103,7 +104,7 @@ export default function Nav () {
         />
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className='bg-slate-400'>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link

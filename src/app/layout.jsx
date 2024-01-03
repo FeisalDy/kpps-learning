@@ -16,7 +16,7 @@ export default function RootLayout ({ children }) {
       <body className={`${inter.className} min-h-dvh`}>
         <Providers>
           <Nav />
-          <div className='max-w-screen-lg mx-auto'>{children}</div>
+          <div className='max-w-screen-xl mx-auto'>{children}</div>
         </Providers>
       </body>
     </html>
