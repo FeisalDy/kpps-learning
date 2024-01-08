@@ -1,7 +1,12 @@
+import { Editor } from 'novel'
 import React from 'react'
 
 const Sirekap = () => {
-  return <div>Sirekap</div>
+  return (
+    <>
+      <Editor />
+    </>
+  )
 }
 
 export default Sirekap

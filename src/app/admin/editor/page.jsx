@@ -1,7 +1,7 @@
 'use client'
 import { Editor } from 'novel'
 import { useState } from 'react'
-import { Input } from '@nextui-org/react'
+import { Input, Button, ButtonGroup } from '@nextui-org/react'
 
 export default function App () {
   const [editorContent, setEditorContent] = useState(
@@ -22,9 +22,6 @@ export default function App () {
           title: title
         })
       })
-      if (res.status === 400) {
-        setError('This email is already registered')
-      }
       if (res.status === 200) {
         setError('')
         router.push('/admin/editor')
@@ -37,7 +34,7 @@ export default function App () {
 
   return (
     <>
-      <div className='mx-auto'>
+      <div className='grid py-4 mx-auto gap-y-6'>
         <Input
           type='text'
           variant='underlined'
@@ -46,8 +43,10 @@ export default function App () {
           value={title}
           onValueChange={setTitle}
         />
-        <Editor defaultValue={editorContent} />
-        <button onClick={handleSubmit}>Save to Database</button>
+        <Editor defaultValue={editorContent} className='shadow-lg' />
+        <Button color='success' onClick={handleSubmit}>
+          Save to Database
+        </Button>
       </div>
     </>
   )
