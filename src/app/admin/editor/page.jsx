@@ -10,8 +10,17 @@ export default function App () {
   const [title, setTitle] = useState('')
   const [error, setError] = useState([])
 
+  const getImageUrlFromEditorContent = content => {
+    const parsedContent = JSON.parse(content)
+    const firstImage = parsedContent.content.find(item => item.type === 'image')
+    return firstImage ? firstImage.attrs.src : null
+  }
+
   const handleSubmit = async () => {
     try {
+      const imageUrl = getImageUrlFromEditorContent(editorContent)
+      console.log(imageUrl)
+
       const res = await fetch('/api/article/upload', {
         method: 'POST',
         headers: {
@@ -19,7 +28,8 @@ export default function App () {
         },
         body: JSON.stringify({
           editorContent: editorContent,
-          title: title
+          title: title,
+          image: imageUrl
         })
       })
       if (res.status === 200) {

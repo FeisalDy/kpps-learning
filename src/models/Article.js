@@ -8,6 +8,10 @@ const ArticleSchema = new Schema(
       type: String,
       required: true
     },
+    image: {
+      type: String,
+      default: ''
+    },
     editorContent: {
       type: Schema.Types.Mixed,
       required: true

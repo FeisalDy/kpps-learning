@@ -3,13 +3,15 @@ import { NextResponse } from 'next/server'
 import Article from '@/models/Article'
 
 export const POST = async request => {
-  const { title, editorContent } = await request.json()
+  const { title, editorContent, image } = await request.json()
+  console.log({ image })
 
   await connect()
 
   const newArticle = new Article({
     title,
-    editorContent
+    editorContent,
+    image
   })
 
   try {

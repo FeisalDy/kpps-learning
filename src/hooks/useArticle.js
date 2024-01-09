@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { getArticle } from '@/lib/article'
+import { getArticle, getArticles } from '@/lib/article'
 import { AxiosError } from 'axios'
 
 export function useArticle (id) {
@@ -18,5 +18,24 @@ export function useArticle (id) {
   return {
     article: data,
     articleLoading: isLoading
+  }
+}
+
+export function useArticles (page, limit) {
+  const { data, isLoading } = useSWR([page, limit], async () => {
+    try {
+      return await getArticles(page, limit)
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        return null
+      } else {
+        throw error
+      }
+    }
+  })
+
+  return {
+    articles: data,
+    articlesLoading: isLoading
   }
 }
